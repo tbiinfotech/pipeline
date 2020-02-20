@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.5.2  -->
+<!-- 2016-07-20T18:39:50 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="360" pageHeight="80" columnWidth="360" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="65582eea-5355-457b-aa41-3034d51284b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Heading" fontSize="14"/>
+	<style name="Base" isDefault="true" fontName="HelveticaCE"/>
+	<parameter name="degree" class="java.lang.Integer"/>	
+	<field name="title" class="java.lang.String"/>
+	<field name="content" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="360" height="40" uuid="592c2ee0-6857-11e6-8b77-86f30ca893d3"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="0" width="360" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="e42ee16e-685b-11e6-8b77-86f30ca893d3"/>
+					<textElement>
+						<font size="13" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="15" width="360" height="20" isRemoveLineWhenBlank="true" uuid="3d09735c-685d-11e6-8b77-86f30ca893d3"/>
+					<box bottomPadding="10" topPadding="5" />
+					<textElement markup="html">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

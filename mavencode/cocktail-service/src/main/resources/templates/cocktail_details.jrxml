@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.5.2  -->
+<!-- 2016-07-20T18:39:50 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="360" pageHeight="80" columnWidth="360" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="65582eea-5355-457b-aa41-3034d51284b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Heading" fontSize="14"/>
+	<style name="Base" isDefault="true" fontName="DejaVu Sans"/>
+	<parameter name="degree" class="java.lang.Integer" />	
+	<field name="title" class="java.lang.String"/>
+	<field name="content" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band/>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="360" height="40" uuid="b030bf2d-aa97-4b8b-b2d8-73259e8b9cbe"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="0" width="360" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="71438e7a-c049-11e6-a4a6-cec0c932ce01"/>
+					<textElement>
+						<font size="14" isBold="true" />
+					</textElement>
+					<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="15" width="360" height="20" isRemoveLineWhenBlank="true" uuid="819301c0-c049-11e6-a4a6-cec0c932ce01"/>
+					<box bottomPadding="25" topPadding="5" />
+					<textElement markup="html">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{content}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="46">
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="0" width="360" height="25" uuid="aab902c2-3f65-4fb9-abdc-e93a905d7afd"/>
+					<box bottomPadding="5"/>
+					<textElement markup="styled">
+						<font size="13" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["DEGREE OF DIFFICULTY:"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="0" y="23" width="17" height="18" uuid="f90cf1e0-125a-4d31-b5f0-0760c615b6ba"/>
+					<textElement markup="styled">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[<style>1</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="30" y="23" width="17" height="18" uuid="0d59a11c-0114-4abf-af62-b2982ed827a5"/>
+					<textElement markup="styled">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[<style>2</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="60" y="23" width="17" height="18" uuid="dcb2f50f-2e52-471f-9a3c-ed027499b482"/>
+					<textElement markup="styled">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[<style>3</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="90" y="23" width="17" height="18" uuid="f7d4a16e-9fee-446b-8dc8-197b077c2374"/>
+					<textElement markup="styled">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[<style>4</style>]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="120" y="23" width="17" height="18" uuid="3f0d6ee3-740d-4055-bd02-713fc82bc106"/>
+					<textElement markup="styled">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[<style>5</style>]]></text>
+				</staticText>
+				<image>
+					<reportElement positionType="Float" x="-7" y="19" width="27" height="27" uuid="8c134628-5239-4144-aa15-b21d95d4b6df">
+						<printWhenExpression><![CDATA[new Boolean($P{degree}.intValue() == 1)]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["templates/diffpics/diff1.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement positionType="Float" x="20" y="19" width="27" height="27" uuid="3d081007-28d9-4970-b121-d3c5172d1e2f">
+						<printWhenExpression><![CDATA[new Boolean($P{degree}.intValue() == 2)]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["templates/diffpics/diff2.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement positionType="Float" x="51" y="19" width="27" height="27" uuid="50fc4cd2-ba60-4918-9e38-2686bf72b808">
+						<printWhenExpression><![CDATA[new Boolean($P{degree}.intValue() == 3)]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["templates/diffpics/diff3.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement positionType="Float" x="81" y="19" width="27" height="27" uuid="0073e87c-77d2-4eb2-b5d1-b1239af07777">
+						<printWhenExpression><![CDATA[new Boolean($P{degree}.intValue() == 4)]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["templates/diffpics/diff4.png"]]></imageExpression>
+				</image>
+				<image>
+					<reportElement positionType="Float" x="110" y="19" width="27" height="27" uuid="64e6292c-59f5-4642-94de-d1e6cdcb4e79">
+						<printWhenExpression><![CDATA[new Boolean($P{degree}.intValue() == 5)]]></printWhenExpression>
+					</reportElement>
+					<imageExpression><![CDATA["templates/diffpics/diff5.png"]]></imageExpression>
+				</image>
+		</band>
+	</lastPageFooter>
+</jasperReport>

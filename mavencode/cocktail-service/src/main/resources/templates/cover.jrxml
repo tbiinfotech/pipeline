@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="865" pageHeight="630" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<style name="Base" isDefault="true" fontName="HelveticaCE"/>
+	<background>
+        <band height="630">
+            <staticText>
+                <reportElement mode="Opaque" x="446" y="0" width="419" height="630" backcolor="#add8e6"/>
+                <textElement/>
+                <text><![CDATA[]]></text>
+            </staticText>
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="415" width="446" height="215" backcolor="#eee9e9"/>
+                <textElement/>
+                <text><![CDATA[]]></text>
+            </staticText>
+        </band>	
+    </background>
+	<detail>
+		<band height="630">
+			<image>
+				<reportElement x="65" y="45" width="140" height="140"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$imageReader.blob($presentation.accountLogo)]]></imageExpression>
+			</image>
+			<image vAlign="Middle" scaleImage="RetainShape">
+				<reportElement x="446" y="0" width="420" height="630"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$imageReader.blob($presentation.brandedElement)]]></imageExpression>
+			</image>
+			<frame>
+                <reportElement x="65" y="210" width="320" height="88"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement isRemoveLineWhenBlank="true" x="0" y="0" width="320" height="64"/>
+					<textElement>
+						<font isBold="true" size="36"/>
+					</textElement>
+					<textFieldExpression><![CDATA["$!presentation.title"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement positionType="Float" x="0" y="64" width="320" height="24"/>
+					<textElement>
+						<font size="16"/>
+					</textElement>
+					<textFieldExpression><![CDATA["$!presentation.dateStrings"]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="65" y="450" width="320" height="54"/>
+				<textElement>
+					<font size="32" isBold="true"/>
+				</textElement>
+				<text>contact</text>
+			</staticText>
+			
+			<staticText>
+				<reportElement x="65" y="510" width="320" height="77"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[$!presentation.contactInfo]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

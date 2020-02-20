@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "starting server ..."
+
+echo `pwd`
+#service httpd start
+ps -ef | grep -i '\-jar' | grep -v grep | cut -c 9-15 | xargs kill -s 9
+chmod +x /home/ubuntu/*.jar
+nohup java -Dspring.profiles.active=dev -Deureka-host=10.0.0.215 -jar /home/ubuntu/authentication-service-0.0.1-SNAPSHOT.jar >  config.log 2>&1 &
+
+echo "server started"

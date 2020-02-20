@@ -1,0 +1,51 @@
+server:
+  port: 9013
+  
+spring:
+  servlet:
+    multipart:
+       max-file-size: 2048KB
+       max-request-size: 2048KB
+       enabled: true
+   
+amazonProperties:
+  endpointUrl: https://preview.liquidpresentation.com
+  accessKey: AKIA3O5FP4PBUVNTHW6P
+  secretKey: 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
+  bucketName: lpgen2.repo
+  region: us-east-2
+  
+            
+security:
+  basic:
+    enabled: false
+  oauth2:
+    client:
+      clientId: lpwebapp
+      clientSecret: thisissecret
+      accessTokenUri: http://34.194.60.121:8901/auth/oauth/token
+      userAuthorizationUri: http://34.194.60.121:8901/auth/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: http://34.194.60.121:8901/auth/user
+      preferTokenInfo: false
+
+ribbon.ReadTimeout: 120000
+ribbon.ConnectTimeout: 30000  
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 126000ms
+            
+            
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.liquidpresentaion: DEBUG
+  file: /home/ubuntu/${spring.application.name:managementservice}.log

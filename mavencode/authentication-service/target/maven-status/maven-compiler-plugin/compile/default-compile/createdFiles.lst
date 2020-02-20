@@ -1,0 +1,15 @@
+com/liquidpresentaion/authenticationservice/ResponseHeaderFilter.class
+com/liquidpresentaion/authenticationservice/model/LpUserDetails$1.class
+com/liquidpresentaion/authenticationservice/repository/UserRepository.class
+com/liquidpresentaion/authenticationservice/security/LpUserDetailsService.class
+com/liquidpresentaion/authenticationservice/security/WebSecurityConfigurer$1.class
+com/liquidpresentaion/authenticationservice/model/User.class
+com/liquidpresentaion/authenticationservice/AuthenticationServiceApplication.class
+com/liquidpresentaion/authenticationservice/model/GroupUser.class
+com/liquidpresentaion/authenticationservice/security/OAuth2Config.class
+com/liquidpresentaion/authenticationservice/model/LpUserDetails.class
+com/liquidpresentaion/authenticationservice/model/Group.class
+com/liquidpresentaion/authenticationservice/model/LpUserDetails$AuthorityComparator.class
+com/liquidpresentaion/authenticationservice/security/JpaRepositoryImpl.class
+com/liquidpresentaion/authenticationservice/repository/GroupRepository.class
+com/liquidpresentaion/authenticationservice/security/WebSecurityConfigurer.class

@@ -1,0 +1,41 @@
+server:
+  port: 9012
+
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://18.222.182.216:8901/auth/user 
+      
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.liquidpresentaion: DEBUG
+  file: /home/ubuntu/${spring.application.name:ingredientservice}.log
+
+
+amazonProperties:
+  endpointUrl: https://preview.liquidpresentation.com
+  accessKey: AKIA3O5FP4PBUWMMGKV7
+  secretKey: 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
+  bucketName: lpgen2.repo
+  region: us-east-2
+
+ribbon.ReadTimeout: 120000
+ribbon.ConnectTimeout: 30000
+hystrix:
+  shareSecurityContext: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 90000
+
+spring:
+  servlet:
+   multipart:
+     enabled: true
+     max-file-size: 50MB
+     max-request-size: 50MB

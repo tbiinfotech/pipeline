@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.5.2  -->
+<!-- 2016-07-20T18:46:34 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="630" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f08163a0-5816-4b7f-92fb-c735b06660c7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="206"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<style name="Heading" fontSize="14"/>
+	<style name="Base" isDefault="true" fontName="HelveticaCE"/>
+	<parameter name="dataSource" class="java.util.List"/>
+	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<field name="brandName" class="java.lang.String"/>
+	<background>
+		<band height="630">
+			<image hAlign="Right">
+				<reportElement x="742" y="575" width="80" height="44"/>
+				<imageExpression><![CDATA[$imageReader.blob($presentation.accountLogo)]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<detail>
+		<band height="565" splitType="Stretch">
+			<frame>
+				<reportElement x="0" y="0" width="802" height="320"/>
+					<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="20" y="20" width="780" height="60" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+						<box bottomPadding="40" />
+						<textElement markup="html">
+							<font size="36" isBold="true" />
+						</textElement>
+						<textFieldExpression><![CDATA[${D}F{brandName}]]></textFieldExpression>
+					</textField>
+					<textField isStretchWithOverflow="true" evaluationTime="Page" isBlankWhenNull="true">
+						<reportElement positionType="Float" x="20" y="20" width="780" height="40" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+						<textElement textAlignment="Right">
+							<font size="16" isBold="true"/>
+						</textElement>
+						<textFieldExpression><![CDATA[${D}V{PAGE_NUMBER} > 1 ? " CONTINUED" : ""]]></textFieldExpression>
+					</textField>
+					<subreport>
+						<reportElement positionType="Float" x="20" y="100" width="780" height="40" uuid="a46e8f3e-6865-11e6-8b77-86f30ca893d3"/>
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(${D}P{dataSource})]]></dataSourceExpression>
+						<subreportExpression><![CDATA[${D}P{subReport}]]></subreportExpression>
+					</subreport>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40"/>
+	</pageFooter>
+</jasperReport>

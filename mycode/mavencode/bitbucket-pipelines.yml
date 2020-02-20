@@ -1,0 +1,63 @@
+#The CI/CD pipelines
+
+image: maven:3.3.9
+pipelines:
+  branches:
+    master:
+    - step:
+        name: clean and package
+        caches:
+          - maven
+        script: # Modify the commands below to build your repository.
+          - mvn -DskipTests=true clean package
+          - pwd
+          - ls -ltr
+        artifacts:
+          - configurationserver/**
+          - cocktail-service/**
+          #- eurekasvr/**
+          - ingredient-service/**
+          - management-service/**
+          - user-service/**
+          - authentication-service/**          
+          - zuulsvr/**
+
+    #- step:
+    #     name: deploy to test
+    #     image: python:3.5.1
+    #     deployment: test
+    #     trigger: manual
+    #     caches:
+    #       - pip         
+    #     script:
+    #        - apt-get update # required to install zip
+    #        - apt-get install -y zip # required for packaging up the application
+    #        - pip install boto3==1.3.0 # required for codedeploy_deploy.py
+    #       - bash deploy_bash.sh TEST
+
+    - step:
+         name: deploy to stage
+         image: python:3.5.7
+         deployment: staging
+         #trigger: manual
+         caches:
+           - pip         
+         script:
+            - apt-get update # required to install zip
+            - apt-get install -y zip # required for packaging up the application
+            #- pip install boto3==1.3.0 # required for codedeploy_deploy.py              
+            - pip install boto3==1.9.108 # required for codedeploy_deploy.py
+            - bash deploy_bash.sh STGE
+
+    - step:
+         name: deploy to prod
+         image: python:3.5.7
+         deployment: production
+         trigger: manual
+         caches:
+           - pip         
+         script:
+            - apt-get update # required to install zip
+            - apt-get install -y zip # required for packaging up the application
+            - pip install boto3==1.3.0 # required for codedeploy_deploy.py
+            - bash deploy_bash.sh PROD

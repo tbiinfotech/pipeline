@@ -1,0 +1,26 @@
+server:
+  contextPath:   /auth
+  port: 8901
+#  port: 8902
+#  ssl:
+#    key-store: classpath:ServerCert.jks
+#    key-store-password: passwd
+#    key-password: passwd
+
+#https:
+#  port: 8901
+#  ssl:
+#    key-store: classpath:server.p12
+#    key-store-password: passwd
+#    keyStoreType: PKCS12
+#    keyAlias: 1
+
+  
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: DEBUG
+    com.liquidpresentaion: DEBUG
+    org.springframework.security: DEBUG
+  file: /home/ubuntu/${spring.application.name:authenticationservice}.log

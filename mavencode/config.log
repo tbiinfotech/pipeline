@@ -1,0 +1,2 @@
+2020-02-20 05:47:30.796  WARN 614 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: lease doesn't exist, registering resource: USERSERVICE - ip-172-31-86-77.ec2.internal:userservice:9010
+2020-02-20 05:47:30.797  WARN 614 --- [http-nio-8761-exec-1] c.n.eureka.resources.InstanceResource    : Not Found (Renew): USERSERVICE - ip-172-31-86-77.ec2.internal:userservice:9010

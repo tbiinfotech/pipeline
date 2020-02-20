@@ -1,0 +1,139 @@
+package com.liquidpresentaion.users.controllers;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.liquidpresentaion.users.context.UserContextHolder;
+import com.liquidpresentaion.users.model.Group;
+import com.liquidpresentaion.users.model.GroupUser;
+import com.liquidpresentaion.users.model.GroupImportUser;
+import com.liquidpresentaion.users.services.GroupService;
+import com.liquidpresentation.common.GroupType;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+@RestController
+@RequestMapping(value="internal/v1/groups/{groupType}/groups")
+public class GroupServiceController {
+	private static final Logger logger = LoggerFactory.getLogger(GroupServiceController.class);
+
+	@Autowired
+	private GroupService groupService;
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Group> getGroups(@PathVariable("groupType") GroupType type){
+		return groupService.findByType(type).stream().map(g -> new Group(g.getPkId(), g.getName())).collect(Collectors.toList());
+	}
+	
+	@RequestMapping(value = "/distributors/unassigned", method = RequestMethod.GET)
+	public List<Group> getUnassignTopGroups(@PathVariable("groupType") GroupType type){
+		return groupService.findByTypeAndDistributorIdIsNull(type);
+	}
+	
+	@RequestMapping(value = "/tree", method = RequestMethod.GET)
+	public List<Group> getTreeGroups(@PathVariable("groupType") GroupType type,@RequestParam(value = "fromPage",required = false) String fromPage){
+		return groupService.findTreeByType(type,fromPage);
+	}
+	
+	@RequestMapping(value = "/state", method = RequestMethod.GET)
+	public List<Group> getStateGroups(@PathVariable("groupType") GroupType type){
+		List<Group> groups = groupService.findStateGroups();
+		return groups.stream().map(g -> new Group(g.getPkId(),g.getName())).collect(Collectors.toList());
+	}
+	
+	@RequestMapping(value = "/image", method = RequestMethod.GET)
+	public Group getImageGroup(@PathVariable("groupType") GroupType type){
+		return groupService.findBySupplierGroupOne();
+	}
+	
+	@RequestMapping(value = "/isDisplaying/profitCalculate",method = RequestMethod.GET)
+	public int isProfitCalculate(@PathVariable("groupType") GroupType type,
+								 @RequestParam("isMixologist") Boolean isMixologist) {
+		long userId = UserContextHolder.getContext().getUserId();
+		return groupService.findByUserRole(userId,isMixologist);
+	}
+	
+	@RequestMapping(value = "/{groupId}", method = RequestMethod.GET)
+	public Group getGroup(@PathVariable("groupId") int groupId){
+		return groupService.getGroup(groupId);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public int saveGroup(@PathVariable("groupType") GroupType type, @RequestBody Group group){
+		group.setType(type);
+		Group g = groupService.saveGroup(group);
+		return g.getPkId();
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public void updateGroup(@PathVariable("groupType") GroupType type, @RequestBody Group group){
+		group.setType(type);
+		groupService.updateGroup(group);
+	}
+	
+	@RequestMapping(value = "/{groupId}/include/default/library", method = RequestMethod.PUT)
+	public void updateGroup(@PathVariable("groupId")int groupId){
+		groupService.updateGroupIncludeLibrary(groupId);
+	}
+	
+	@RequestMapping(method = RequestMethod.DELETE)
+	public void deleteGroup(@RequestBody Group group){
+		groupService.deleteGroup(group);
+	}
+	
+	@RequestMapping(value = "/{groupId}/user", method = RequestMethod.POST)
+	public void addGroupUser(@PathVariable("groupId")int groupId, @RequestBody GroupUser groupUser){
+		groupService.addGroupUser(groupId, groupUser);
+	}
+	
+	@RequestMapping(value = "/{groupId}/user", method = RequestMethod.DELETE)
+	public void removeGroupUser(@PathVariable("groupId")int groupId, @RequestBody GroupUser groupUser){
+		groupService.removeGroupUser(groupId, groupUser);
+	}
+	
+	@RequestMapping(value = "{groupId}/group", method = RequestMethod.POST)
+	public void addSalesGroup(@PathVariable("groupId")int supplierGroupId, @RequestBody Group salesGroup){
+		groupService.addSalesGroup(supplierGroupId, salesGroup);
+	}
+	
+	@RequestMapping(value = "{groupId}/group", method = RequestMethod.DELETE)
+	public void removeSalesGroup(@PathVariable("groupId")int supplierGroupId, @RequestBody Group salesGroup){
+		groupService.removeSalesGroup(supplierGroupId, salesGroup);
+	}
+
+
+	@RequestMapping(value = "/{groupId}/user/import", method = RequestMethod.POST)
+	public void importGroupUser(@PathVariable("groupId")int groupId, @RequestBody GroupImportUser groupImportUser){
+		logger.info("Import id : "+ groupId);
+		groupService.importGroupUser(groupId, groupImportUser);
+	}
+
+	@RequestMapping(value = "/{groupId}/user/import", method = RequestMethod.DELETE)
+	public void removeimportGroupUser(@PathVariable("groupId")int groupId, @RequestBody GroupImportUser groupImportUser){
+		logger.info("Remove id : "+ groupId);
+		groupService.removeimportGroupUser(groupId, groupImportUser);
+	}
+
+	
+	/**
+	 * used in team review and cocktail statistics when user selects a group
+	 * 返回用户选择目录的ID及其所有子目录的ID
+	 */
+	@RequestMapping(value = "/{groupId}/group", method = RequestMethod.GET)
+	public List<Integer> getSubGroupIdList(@PathVariable("groupType")GroupType groupType, @PathVariable("groupId")int selectedSalesGroupId, @RequestHeader("Authorization") String token){
+		return groupService.getSubGroupIdList(selectedSalesGroupId);
+	}
+}

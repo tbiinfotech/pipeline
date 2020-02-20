@@ -1,0 +1,343 @@
+2020-02-11 14:43:03.059 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] n.d.s.t.j.AbstractJerseyEurekaHttpClient : Created client for url: http://localhost:8761/eureka/
+2020-02-11 14:43:03.064 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.MonitoredConnectionManager  : Get connection: {}->http://localhost:8761, timeout = 5000
+2020-02-11 14:43:03.064 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : [{}->http://localhost:8761] total kept alive: 0, total issued: 0, total allocated: 0 out of 200
+2020-02-11 14:43:03.064 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : No free connections [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.064 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : Available capacity: 50 out of 50 [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.064 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : Creating new connection [{}->http://localhost:8761]
+2020-02-11 14:43:03.065 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.MonitoredConnectionManager  : Released connection is not reusable.
+2020-02-11 14:43:03.065 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : Releasing connection [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.065 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.shared.NamedConnectionPool         : Notifying no-one, there are no waiting threads
+2020-02-11 14:43:03.065 DEBUG 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] n.d.s.t.j.AbstractJerseyEurekaHttpClient : Jersey HTTP POST http://localhost:8761/eureka//apps/ZUULSERVICE with instance ip-172-31-86-77.ec2.internal:zuulservice:5555; statusCode=N/A
+2020-02-11 14:43:03.065 ERROR 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.post(WebResource.java:570) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.register(AbstractJerseyEurekaHttpClient.java:56) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:119) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:829) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:104) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:88) [eureka-client-1.8.6.jar:1.8.6]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_242]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_242]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_242]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_242]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_242]
+	at java.net.Socket.connect(Socket.java:607) ~[na:1.8.0_242]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.5.jar:4.5.5]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+	... 30 common frames omitted
+
+2020-02-11 14:43:03.066  WARN 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-11 14:43:03.066  WARN 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ZUULSERVICE/ip-172-31-86-77.ec2.internal:zuulservice:5555 - registration failed Cannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:111) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:829) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:104) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:88) [eureka-client-1.8.6.jar:1.8.6]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_242]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_242]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_242]
+
+2020-02-11 14:43:03.066  WARN 25861 --- [DiscoveryClient-InstanceInfoReplicator-0] c.n.discovery.InstanceInfoReplicator     : There was a problem with the instance info replicator
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:111) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$1.execute(EurekaHttpClientDecorator.java:59) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.register(DiscoveryClient.java:829) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator.run(InstanceInfoReplicator.java:104) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.InstanceInfoReplicator$1.run(InstanceInfoReplicator.java:88) [eureka-client-1.8.6.jar:1.8.6]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [na:1.8.0_242]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [na:1.8.0_242]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_242]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_242]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_242]
+
+2020-02-11 14:43:03.059 DEBUG 25861 --- [Thread-10] .s.c.a.CommonAnnotationBeanPostProcessor : Invoking destroy method on bean 'zuulFilterInitializer': public void org.springframework.cloud.netflix.zuul.ZuulFilterInitializer.contextDestroyed()
+2020-02-11 14:43:03.067  INFO 25861 --- [Thread-10] o.s.c.n.zuul.ZuulFilterInitializer       : Stopping filter initializer
+2020-02-11 14:43:03.067 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'simpleHostRoutingFilter': [org.springframework.cloud.netflix.zuul.ZuulServerAutoConfiguration$ZuulFilterConfiguration]
+2020-02-11 14:43:03.067 DEBUG 25861 --- [Thread-10] .s.c.a.CommonAnnotationBeanPostProcessor : Invoking destroy method on bean 'simpleHostRoutingFilter': public void org.springframework.cloud.netflix.zuul.filters.route.SimpleHostRoutingFilter.stop()
+2020-02-11 14:43:03.067 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'springClientFactory': [loadBalancerClient, ribbonCommandFactory]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'loadBalancerClient': [asyncLoadBalancerInterceptor, loadBalancerRequestFactory, ribbonInterceptor]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'asyncLoadBalancerInterceptor': [asyncRestTemplateCustomizer]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'asyncRestTemplateCustomizer': [loadBalancedAsyncRestTemplateInitializer]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'loadBalancerRequestFactory': [ribbonInterceptor]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'ribbonInterceptor': [restTemplateCustomizer]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'ribbonCommandFactory': [ribbonRoutingFilter]
+2020-02-11 14:43:03.068 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'springClientFactory'
+2020-02-11 14:43:03.068  INFO 25861 --- [Thread-10] s.c.a.AnnotationConfigApplicationContext : Closing SpringClientFactory-userservice: startup date [Tue Feb 11 09:51:17 UTC 2020]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@33576938
+2020-02-11 14:43:03.069 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'delegatingApplicationListener'
+2020-02-11 14:43:03.069 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'eurekaAutoServiceRegistration'
+2020-02-11 14:43:03.069 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Returning cached instance of singleton bean 'lifecycleProcessor'
+2020-02-11 14:43:03.069 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2e67a9ab: defining beans [org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.context.event.internalEventListenerProcessor,org.springframework.context.event.internalEventListenerFactory,eurekaRibbonClientConfiguration,propertyPlaceholderAutoConfiguration,ribbonClientConfiguration,org.springframework.boot.autoconfigure.condition.BeanTypeRegistry,ribbonPing,ribbonServerList,serverIntrospector,propertySourcesPlaceholderConfigurer,org.springframework.cloud.commons.httpclient.HttpClientConfiguration$ApacheHttpClientConfiguration,org.springframework.cloud.commons.httpclient.HttpClientConfiguration,org.springframework.cloud.netflix.ribbon.apache.HttpClientRibbonConfiguration$ApacheHttpClientConfiguration,httpClientConnectionManager,httpClient,org.springframework.cloud.netflix.ribbon.apache.HttpClientRibbonConfiguration,ribbonLoadBalancingHttpClient,ribbonClientConfig,ribbonRule,ribbonServerListUpdater,ribbonLoadBalancer,ribbonServerListFilter,ribbonLoadBalancerContext,retryHandler,org.springframework.boot.context.properties.ConfigurationPropertiesBindingPostProcessor,org.springframework.boot.context.properties.ConfigurationBeanFactoryMetadata]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@75d492e6
+2020-02-11 14:43:03.070 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'ribbonLoadBalancer': [ribbonLoadBalancingHttpClient, ribbonLoadBalancerContext]
+2020-02-11 14:43:03.070 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'shutdown' on bean with name 'ribbonLoadBalancer'
+2020-02-11 14:43:03.070  INFO 25861 --- [Thread-10] c.n.u.concurrent.ShutdownEnabledTimer    : Shutdown hook removed for: NFLoadBalancer-PingTimer-userservice
+2020-02-11 14:43:03.070  INFO 25861 --- [Thread-10] c.n.u.concurrent.ShutdownEnabledTimer    : Exception caught (might be ok if at shutdown)
+
+java.lang.IllegalStateException: Shutdown in progress
+	at java.lang.ApplicationShutdownHooks.remove(ApplicationShutdownHooks.java:82) ~[na:1.8.0_242]
+	at java.lang.Runtime.removeShutdownHook(Runtime.java:240) ~[na:1.8.0_242]
+	at com.netflix.util.concurrent.ShutdownEnabledTimer.cancel(ShutdownEnabledTimer.java:70) ~[netflix-commons-util-0.1.1.jar:na]
+	at com.netflix.loadbalancer.BaseLoadBalancer.cancelPingTask(BaseLoadBalancer.java:613) [ribbon-loadbalancer-2.2.4.jar:2.2.4]
+	at com.netflix.loadbalancer.BaseLoadBalancer.shutdown(BaseLoadBalancer.java:864) [ribbon-loadbalancer-2.2.4.jar:2.2.4]
+	at com.netflix.loadbalancer.DynamicServerListLoadBalancer.shutdown(DynamicServerListLoadBalancer.java:285) [ribbon-loadbalancer-2.2.4.jar:2.2.4]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:576) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:552) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:521) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.destroySingletons(FactoryBeanRegistrySupport.java:226) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1037) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1013) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:963) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.cloud.context.named.NamedContextFactory.destroy(NamedContextFactory.java:76) [spring-cloud-context-2.0.0.M8.jar:2.0.0.M8]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:256) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:576) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:552) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:521) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.destroySingletons(FactoryBeanRegistrySupport.java:226) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1037) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1013) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:933) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+
+2020-02-11 14:43:03.071 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'httpClient'
+2020-02-11 14:43:03.071 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'httpClientConnectionManager'
+2020-02-11 14:43:03.071 DEBUG 25861 --- [Thread-10] .s.c.a.CommonAnnotationBeanPostProcessor : Invoking destroy method on bean 'org.springframework.cloud.netflix.ribbon.apache.HttpClientRibbonConfiguration$ApacheHttpClientConfiguration': public void org.springframework.cloud.netflix.ribbon.apache.HttpClientRibbonConfiguration$ApacheHttpClientConfiguration.destroy() throws java.lang.Exception
+2020-02-11 14:43:03.072 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'springSecurityFilterChain': [webSecurityExpressionHandler, privilegeEvaluator]
+2020-02-11 14:43:03.072 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'springSecurityFilterChain'
+2020-02-11 14:43:03.072 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'jmxMBeanExporter'
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Archaius' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Auditevents' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Beans' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Health' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Conditions' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Configprops' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Env' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Info' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Loggers' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Threaddump' from the JMX domain
+2020-02-11 14:43:03.073 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Metrics' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Scheduledtasks' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Httptrace' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Mappings' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Refresh' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Features' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Service-registry' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Routes' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.a.e.jmx.JmxEndpointExporter        : Unregister endpoint with ObjectName 'org.springframework.boot:type=Endpoint,name=Filters' from the JMX domain
+2020-02-11 14:43:03.074 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'mbeanExporter'
+2020-02-11 14:43:03.074  INFO 25861 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2020-02-11 14:43:03.075  INFO 25861 --- [Thread-10] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2020-02-11 14:43:03.075 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'mvcResourceUrlProvider': [requestMappingHandlerMapping]
+2020-02-11 14:43:03.075 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'mvcValidator': [requestMappingHandlerAdapter]
+2020-02-11 14:43:03.075 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'requestMappingHandlerAdapter': [mvcUriComponentsContributor]
+2020-02-11 14:43:03.075 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'mvcValidator'
+2020-02-11 14:43:03.075 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'defaultValidator'
+2020-02-11 14:43:03.076 DEBUG 25861 --- [Thread-10] .s.c.a.CommonAnnotationBeanPostProcessor : Invoking destroy method on bean 'org.springframework.cloud.netflix.archaius.ArchaiusAutoConfiguration': public void org.springframework.cloud.netflix.archaius.ArchaiusAutoConfiguration.close()
+2020-02-11 14:43:03.077 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'hystrixShutdownHook'
+2020-02-11 14:43:03.081 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'objectPostProcessor': [securityConfiguration, org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration, authenticationManagerBuilder, org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration]
+2020-02-11 14:43:03.081 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'objectPostProcessor'
+2020-02-11 14:43:03.081 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'characterEncodingFilter'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'httpTraceFilter'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'httpPutFormContentFilter'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'hiddenHttpMethodFilter'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'requestContextFilter'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'eurekaServiceRegistry': [serviceRegistryEndpoint, eurekaAutoServiceRegistration]
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'eurekaAutoServiceRegistration': [org.springframework.cloud.netflix.eureka.EurekaDiscoveryClientConfiguration$EurekaClientConfigurationRefresher, org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationAutoConfiguration]
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'eurekaServiceRegistry'
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'discoveryClientHealthIndicator': [discoveryCompositeHealthIndicator]
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'configurationPropertiesRebinder': [refreshScopeHealthIndicator]
+2020-02-11 14:43:03.082 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'eurekaRegistration': [org.springframework.cloud.netflix.zuul.ZuulProxyAutoConfiguration, org.springframework.cloud.client.serviceregistry.ServiceRegistryAutoConfiguration$ServiceRegistryEndpointConfiguration]
+2020-02-11 14:43:03.083 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'eurekaRegistration'
+2020-02-11 14:43:03.083  INFO 25861 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2020-02-11 14:43:03.083  INFO 25861 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : Unregistering ...
+2020-02-11 14:43:03.084 DEBUG 25861 --- [Thread-10] c.n.d.s.t.d.RetryableEurekaHttpClient    : Clearing quarantined list of size 1
+2020-02-11 14:43:03.084 DEBUG 25861 --- [Thread-10] n.d.s.t.j.AbstractJerseyEurekaHttpClient : Created client for url: http://localhost:8761/eureka/
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.MonitoredConnectionManager  : Get connection: {}->http://localhost:8761, timeout = 5000
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : [{}->http://localhost:8761] total kept alive: 0, total issued: 0, total allocated: 0 out of 200
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : No free connections [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Available capacity: 50 out of 50 [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Creating new connection [{}->http://localhost:8761]
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.MonitoredConnectionManager  : Released connection is not reusable.
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Releasing connection [{}->http://localhost:8761][null]
+2020-02-11 14:43:03.085 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Notifying no-one, there are no waiting threads
+2020-02-11 14:43:03.086 DEBUG 25861 --- [Thread-10] n.d.s.t.j.AbstractJerseyEurekaHttpClient : Jersey HTTP DELETE http://localhost:8761/eureka//apps/ZUULSERVICE/ip-172-31-86-77.ec2.internal:zuulservice:5555; statusCode=N/A
+2020-02-11 14:43:03.086 ERROR 25861 --- [Thread-10] c.n.d.s.t.d.RedirectingEurekaHttpClient  : Request execution error
+
+com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused (Connection refused)
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.netflix.discovery.EurekaIdentityHeaderFilter.handle(EurekaIdentityHeaderFilter.java:27) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.sun.jersey.api.client.Client.handle(Client.java:652) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource.handle(WebResource.java:682) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource.access$200(WebResource.java:74) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.sun.jersey.api.client.WebResource$Builder.delete(WebResource.java:591) ~[jersey-client-1.19.1.jar:1.19.1]
+	at com.netflix.discovery.shared.transport.jersey.AbstractJerseyEurekaHttpClient.cancel(AbstractJerseyEurekaHttpClient.java:76) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.MetricsCollectingEurekaHttpClient.execute(MetricsCollectingEurekaHttpClient.java:73) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.executeOnNewServer(RedirectingEurekaHttpClient.java:118) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RedirectingEurekaHttpClient.execute(RedirectingEurekaHttpClient.java:79) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:119) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:923) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:901) [eureka-client-1.8.6.jar:1.8.6]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:223) [spring-core-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:475) [spring-cloud-context-2.0.0.M8.jar:2.0.0.M8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at com.sun.proxy.$Proxy150.shutdown(Unknown Source) [na:na]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.close(EurekaRegistration.java:207) [spring-cloud-netflix-eureka-client-2.0.0.M7.jar:2.0.0.M7]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:576) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:552) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:521) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.destroySingletons(FactoryBeanRegistrySupport.java:226) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1037) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1013) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:933) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206) ~[na:1.8.0_242]
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188) ~[na:1.8.0_242]
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392) ~[na:1.8.0_242]
+	at java.net.Socket.connect(Socket.java:607) ~[na:1.8.0_242]
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:121) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.AbstractPoolEntry.open(AbstractPoolEntry.java:144) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.conn.AbstractPooledConnAdapter.open(AbstractPooledConnAdapter.java:134) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:610) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:445) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:118) ~[httpclient-4.5.5.jar:4.5.5]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.5.jar:4.5.5]
+	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173) ~[jersey-apache-client4-1.19.1.jar:1.19.1]
+	... 47 common frames omitted
+
+2020-02-11 14:43:03.087  WARN 25861 --- [Thread-10] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: java.net.ConnectException: Connection refused (Connection refused)
+2020-02-11 14:43:03.087 ERROR 25861 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_ZUULSERVICE/ip-172-31-86-77.ec2.internal:zuulservice:5555 - de-registration failedCannot execute request on any known server
+
+com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
+	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:111) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$2.execute(EurekaHttpClientDecorator.java:74) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:77) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.cancel(EurekaHttpClientDecorator.java:71) ~[eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.unregister(DiscoveryClient.java:923) [eureka-client-1.8.6.jar:1.8.6]
+	at com.netflix.discovery.DiscoveryClient.shutdown(DiscoveryClient.java:901) [eureka-client-1.8.6.jar:1.8.6]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:223) [spring-core-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.cloud.context.scope.GenericScope$LockedScopedProxyFactoryBean.invoke(GenericScope.java:475) [spring-cloud-context-2.0.0.M8.jar:2.0.0.M8]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185) [spring-aop-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) [spring-aop-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at com.sun.proxy.$Proxy150.shutdown(Unknown Source) [na:na]
+	at org.springframework.cloud.netflix.eureka.serviceregistry.EurekaRegistration.close(EurekaRegistration.java:207) [spring-cloud-netflix-eureka-client-2.0.0.M7.jar:2.0.0.M7]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_242]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_242]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_242]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_242]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.invokeCustomDestroyMethod(DisposableBeanAdapter.java:337) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DisposableBeanAdapter.destroy(DisposableBeanAdapter.java:271) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:576) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingleton(DefaultSingletonBeanRegistry.java:552) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingleton(DefaultListableBeanFactory.java:957) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:521) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.FactoryBeanRegistrySupport.destroySingletons(FactoryBeanRegistrySupport.java:226) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.destroySingletons(DefaultListableBeanFactory.java:964) [spring-beans-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.destroyBeans(AbstractApplicationContext.java:1037) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1013) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:933) [spring-context-5.0.4.RELEASE.jar:5.0.4.RELEASE]
+
+2020-02-11 14:43:03.091 DEBUG 25861 --- [Thread-10] c.n.d.shared.MonitoredConnectionManager  : Closing connections idle longer than 0 SECONDS
+2020-02-11 14:43:03.091 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Closing connections idle longer than 0 SECONDS
+2020-02-11 14:43:03.091 DEBUG 25861 --- [Thread-10] c.n.d.shared.MonitoredConnectionManager  : Closing connections idle longer than 0 SECONDS
+2020-02-11 14:43:03.091 DEBUG 25861 --- [Thread-10] c.n.d.shared.NamedConnectionPool         : Closing connections idle longer than 0 SECONDS
+2020-02-11 14:43:03.091  INFO 25861 --- [Thread-10] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'simpleMeterRegistry': [webMvcMetricsFilter, metricsEndpoint, metricsRestTemplateCustomizer, counterFactory]
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'simpleMeterRegistry'
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy method 'close' on bean with name 'logbackMetrics'
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'refreshScope': [eurekaClient, eurekaApplicationInfoManager, contextRefresher]
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'eurekaClient': [discoveryClient]
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'discoveryClient': [compositeDiscoveryClient]
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'eurekaApplicationInfoManager': [scopedTarget.eurekaClient]
+2020-02-11 14:43:03.092 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'contextRefresher': [refreshEndpoint, refreshEventListener]
+2020-02-11 14:43:03.093 DEBUG 25861 --- [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invoking destroy() on bean with name 'refreshScope'
+2020-02-11 14:43:03.095 DEBUG 25861 --- [Thread-10] .s.c.a.CommonAnnotationBeanPostProcessor : Invoking destroy method on bean 'scopedTarget.eurekaClient': public synchronized void com.netflix.discovery.DiscoveryClient.shutdown()
+2020-02-11 14:43:03.095 DEBUG 25861 --- [Thread-10] o.s.b.f.s.DefaultListableBeanFactory     : Retrieved dependent beans for bean 'org.springframework.boot.autoconfigure.internalCachingMetadataReaderFactory': [org.springframework.context.annotation.internalConfigurationAnnotationProcessor]

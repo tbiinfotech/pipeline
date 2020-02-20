@@ -1,0 +1,138 @@
+server:
+  port: 5555
+#  ssl:
+#    key-store: classpath:server.p12
+#    key-store-password: passwd
+#    keyStoreType: PKCS12
+#    keyAlias: 1
+#server:
+# # port: 8443
+#  ssl:
+#    key-store: classpath:ServerCert.jks
+#    key-store-password: passwd
+#    key-password: passwd
+
+#https:
+#  port: 5555
+
+#Setting logging levels
+logging:
+    level:
+      com.netflix: DEBUG
+      org.springframework.web: DEBUG
+      com.thoughtmechanix: DEBUG
+      org.springframework: DEBUG
+      org.springframework.security: DEBUG
+    file: ${spring.application.name:config}.log
+
+#zuul:
+#  sensitiveHeaders: Cookie, Set-Cookie
+##
+#zuul:
+#  prefix:  /api
+#  routes:
+#    organizationservice: /organization/**
+#    licensingservice: /licensing/**
+
+#zuul:
+#  routes:
+#    userservice:
+#      path=/userservice/**
+#      serviceId=userservice
+#      
+#zuul:
+#  routes:
+#    managementservice:
+#      path=/managementservice/**
+#      serviceId=managementservice
+#      
+#zuul:
+#  routes:
+#    ingredientservice:
+#      path=/ingredientservice/**
+#      serviceId=ingredientservice
+#      
+#zuul:
+#  routes:
+#    ingredientservice:
+#      path=/cocktailservice/**
+#      serviceId=cocktailservice
+#      
+#zuul:
+#  routes:
+#    ingredientservice:
+#      path=/authenticationservice/**
+#      serviceId=authenticationservice
+
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 600000
+ 
+zuul:
+  ignoredServices: '*'
+  sensitiveHeaders: Cookie,Set-Cookie,Authorization
+  routes:
+    auth:
+      path: /auth/**
+      serviceId: authenticationservice
+      sensitive-headers: Cookie,Set-Cookie
+      stripPrefix: false
+    cocktailservice:
+      path: /cocktailservice/**
+      sensitiveHeaders:
+      serviceId: cocktailservice
+    userservice:
+      path: /userservice/**
+      sensitiveHeaders:
+      serviceId: userservice
+    ingredientservice:
+      path: /ingredientservice/**
+      sensitiveHeaders:
+      serviceId: ingredientservice
+    managementservice:
+      path: /managementservice/**
+      sensitiveHeaders:
+      serviceId: managementservice
+    webapp:
+      path: /**
+      #url: http://${webapp-host:localhost}:9100
+      url: http://${webapp-host:localhost}
+  add-proxy-headers: true 
+  
+security:
+#  basic:
+#    enabled: false
+  oauth2:
+    sso:
+      loginPath: /**/index.html
+    client:
+      clientId: lpwebapp
+      clientSecret: thisissecret
+      accessTokenUri: http://34.194.60.121:8901/auth/oauth/token
+      userAuthorizationUri: http://34.194.60.121:8901/auth/oauth/authorize
+      clientAuthenticationScheme: form
+    resource:
+      userInfoUri: http://34.194.60.121::8901/auth/user
+      preferTokenInfo: false
+   
+#proxy:
+#  auth:
+#    routes:
+#      userservice: oauth2
+#      stores: passthru
+#      recommendations:  none
+
+spring:
+  servlet:
+   multipart:
+     enabled: true
+     max-file-size: 50MB
+     max-request-size: 50MB

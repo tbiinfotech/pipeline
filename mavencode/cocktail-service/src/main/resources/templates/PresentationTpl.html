@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+@page {
+	
+} /* default page styles here */
+</style>
+</head>
+<body>
+	<div style="width: 100%; height: 200px">
+		<p th:text="'Presentation title: ' + ${title} + '!'" />
+		<img th:src="@{classpath:/Test.jpg}" title="PresentationImage" />
+	</div>
+	<div th:each="cocktail : ${cocktails}"
+		style="page-break-before: always; page-break-after: always; width: 100%; height: 500px; background-color: gainsboro; text-align: center">
+		<div style="width: 100%; height: 200px">
+			<p th:text="'Cocktail Name: ' + ${cocktail.name} + '!'" />
+			<img th:src="@{classpath:/Test.jpg}" title="CocktailImage" />
+		</div>
+	</div>
+</body>
+</html>
+
+

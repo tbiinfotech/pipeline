@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Summary" language="groovy" columnCount="4" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="200" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="58e7bbbb-f145-4744-a655-f116f6a55398">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<style name="Base" isDefault="true" fontName="HelveticaCE"/>
+	<style name="style1" isBold='false'>
+		<conditionalStyle>
+<!-- #[[ -->
+			<conditionExpression><![CDATA[$F{header}]]></conditionExpression>
+			<style isBold='true'/>
+<!-- ]]# -->
+        </conditionalStyle>
+	</style>
+	<field name="text" class="java.lang.String">
+		<fieldDescription><![CDATA[text]]></fieldDescription>
+	</field>
+	<field name="header" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[header]]></fieldDescription>
+	</field>
+	<background>
+		<band height="575" splitType="Stretch">
+			<image hAlign = "Right">
+				<reportElement x="722" y="531" width="80" height="44"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$imageReader.blob($presentation.image)]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="43" width="388" height="56" uuid="84c87786-8e74-41ca-af98-cb653c9d4f1a"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Ingredients]]></text>
+			</staticText>
+		</band>
+	</title>
+<!-- #[[ -->
+	<detail>
+		<band height="14" splitType="Prevent">
+			<textField isStretchWithOverflow="true">
+				<reportElement style="style1" isPrintWhenDetailOverflows="false" x="0" y="0" width="200" height="10"/>
+				<textElement markup="styled">
+				</textElement>
+				<textFieldExpression><![CDATA[$F{text}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+<!-- ]]# -->
+</jasperReport>

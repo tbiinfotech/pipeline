@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.0.final using JasperReports Library version 5.5.2  -->
+<!-- 2016-07-20T18:46:34 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="630" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f08163a0-5816-4b7f-92fb-c735b06660c7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="206"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<style name="Heading" fontSize="14"/>
+	<style name="Base" isDefault="true" fontName="HelveticaCE"/>
+	<parameter name="PAGE_OFFSET" class="java.lang.Integer">
+		<defaultValueExpression>new java.lang.Integer(0)</defaultValueExpression>
+	</parameter>
+	<parameter name="dataSource" class="java.util.List"/>
+	<parameter name="subReport" class="net.sf.jasperreports.engine.JasperReport"/>
+	<background>
+		<band height="630">
+			<image hAlign="Right" isUsingCache="true" onErrorType="Blank">
+				<reportElement x="742" y="575" width="80" height="44" uuid="302af7da-f493-43ee-b6e3-1b6eb10ac246"/>
+				<imageExpression><![CDATA[$imageReader.blob($presentation.accountLogo)]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<detail>
+		<band height="565" splitType="Stretch">
+			<image isUsingCache="true" onErrorType="Blank">
+				<reportElement x="50" y="25" width="315" height="430" isPrintWhenDetailOverflows="true" uuid="26fe97d0-c6c9-4b44-8fb7-a517b34a8633"/>
+				<imageExpression><![CDATA["templates/defaultfont.png"]]></imageExpression>
+			</image>
+			<image isUsingCache="true" onErrorType="Blank">
+				<reportElement x="57" y="32" width="300" height="407" isPrintWhenDetailOverflows="true" uuid="9d3f6350-247f-456e-a1d5-59e94dcf5507"/>
+				<imageExpression><![CDATA[$imageReader.blob($cocktail.image)]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="50" y="457" width="307" height="32" uuid="72b106e4-a863-437d-a43b-60c0e726ed5d"/>
+				<textElement markup="html">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[RECIPE COMMENTS:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="50" y="488" width="307" height="1" uuid="0d1ea3f0-2296-4f2b-9849-e2e2a11c6cae"/>
+			</line>
+			<line>
+				<reportElement x="50" y="504" width="307" height="1" uuid="c697ec3f-28d7-43a9-a893-eabff61c7b4e"/>
+			</line>
+			<staticText>
+				<reportElement x="50" y="512" width="307" height="20" uuid="931b622d-86b2-47ae-8454-b816b35c3c6e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Taste:    1    2    3    4    5    6    7    8    9    10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="530" width="307" height="20" uuid="c5da7175-6494-4c51-b651-ac0209f4c6f2"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Drink Name Ideas:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="50" y="559" width="307" height="1" uuid="ee1f1cce-1269-46c8-9010-3806a7d17c81"/>
+			</line>
+			<frame>
+				<reportElement x="400" y="0" width="360" height="120" uuid="9ddd1dbb-78d9-4694-a7d8-2c0cb25de8a0"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="40" width="329" height="60" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="805f1588-7a9c-4eac-ae69-a7acc9c13356"/>
+					<box bottomPadding="40" />
+					<textElement markup="html">
+						<font size="36" isBold="true" />
+					</textElement>
+					<textFieldExpression><![CDATA[#if($!cocktail.name && $!cocktail.name != '')"$!cocktail.name"#else""#end]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Page" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="0" y="40" width="359" height="40" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="21a144d9-da5f-4cfa-91c6-9b0735f84c5d"/>
+					<box topPadding="-15" />
+					<textElement textAlignment="Right">
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[${D}V{PAGE_NUMBER} > 1 ? " CONTINUED" : ""]]></textFieldExpression>
+				</textField>
+				<subreport>
+					<reportElement positionType="Float" x="0" y="100" width="359" height="20" uuid="901d4b1b-7fa0-4782-8297-d8ee402d8cc9"/>
+					<subreportParameter name="degree">
+						<subreportParameterExpression><![CDATA[new Integer(#if($!cocktail.degreeOfDiff)"$cocktail.degreeOfDiff"#else"0"#end)]]></subreportParameterExpression>
+					</subreportParameter>
+					<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(${D}P{dataSource})]]></dataSourceExpression>
+					<subreportExpression><![CDATA[${D}P{subReport}]]></subreportExpression>
+				</subreport>
+			</frame>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40">
+			<textField isStretchWithOverflow="true" evaluationTime="Page" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="0" width="802" height="40" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[${D}P{PAGE_OFFSET} + (${D}V{PAGE_NUMBER} > 1 ? 1 : 0)]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

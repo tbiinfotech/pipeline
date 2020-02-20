@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>LP2 Console</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:if="${error != null}">
+		Error: <span th:text="${error}" STYLE="color: red; font-size: 12pt"></span><br>
+	</div>
+	<p th:text="导入条件匹配" />
+	<table class="paleBlueRows">
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>匹配条件</th>
+				<th>匹配结果</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>AC1</td>
+			<td>match by distributor id, distributor item code, (sales group id or state)</td>
+			<td th:text="${matchAC1}">N/A</td>
+		</tr>
+		<tr>
+			<td>AC2</td>
+			<td>match by ingredient id OR (distributor id and distributor item code)</td>
+			<td th:text="${matchAC2}">N/A</td>
+		</tr>
+		<tr>
+			<td>AC3</td>
+			<td>match by distributor brand id</td>
+			<td th:text="${matchAC3}">N/A</td>
+		</tr>
+		<tr>
+			<td>AC4</td>
+			<td>match by mpc (<span STYLE="color: blue; font-size: 12pt">Ignore this AC if AC3 produces a no match error</span>)</td>
+			<td th:text="${matchAC4}">N/A</td>
+		</tr>
+	</table>
+	<br>
+	<p th:text="上传记录" />
+	<table class="paleBlueRows">
+		<thead>
+			<tr>
+				<th>属性</th>
+				<th>值</th>
+			</tr>
+		</thead>
+		<tr>
+			<td>distributorId</td>
+			<td th:text="${distributorId}">N/A</td>
+		</tr>
+		<tr>
+			<td>itemCode</td>
+			<td th:text="${itemCode}">N/A</td>
+		</tr>
+		<tr>
+			<td>salesGroupId</td>
+			<td th:text="${salesGroupId}">N/A</td>
+		</tr>
+		<tr>
+			<td>state</td>
+			<td th:text="${state}">N/A</td>
+		</tr>
+		<tr>
+			<td>ingredientId</td>
+			<td th:text="${ingredientId}">N/A</td>
+		</tr>
+		<tr>
+			<td>distributorBrandId</td>
+			<td th:text="${distributorBrandId}">N/A</td>
+		</tr>
+		<tr>
+			<td>mpc</td>
+			<td th:text="${mpc}">N/A</td>
+		</tr>
+	</table>
+</body>
+
+<style>
+table.paleBlueRows {
+	font-family: "Times New Roman", Times, serif;
+	border: 1px solid #FFFFFF;
+	width: 100%;
+	height: 120px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+table.paleBlueRows td, table.paleBlueRows th {
+	border: 1px solid #FFFFFF;
+	padding: 3px 2px;
+}
+
+table.paleBlueRows tbody td {
+	font-size: 18px;
+}
+
+table.paleBlueRows tr:nth-child(even) {
+	background: #D0E4F5;
+}
+
+table.paleBlueRows thead {
+	background: #0B6FA4;
+	border-bottom: 5px solid #FFFFFF;
+}
+
+table.paleBlueRows thead th {
+	font-size: 17px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #FFFFFF;
+}
+
+table.paleBlueRows thead th:first-child {
+	border-left: none;
+}
+
+table.paleRedRows {
+	font-family: "Times New Roman", Times, serif;
+	border: 1px solid #FFFFFF;
+	width: 100%;
+	height: 120px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+table.paleRedRows td, table.paleRedRows th {
+	border: 1px solid #FFFFFF;
+	padding: 3px 2px;
+}
+
+table.paleRedRows tbody td {
+	font-size: 18px;
+}
+
+table.paleRedRows tr:nth-child(even) {
+	background: #f5d0d6;
+}
+
+table.paleRedRows thead {
+	background: #a40a1b;
+	border-bottom: 5px solid #FFFFFF;
+}
+
+table.paleRedRows thead th {
+	font-size: 17px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: center;
+	border-left: 2px solid #FFFFFF;
+}
+
+table.paleRedRows thead th:first-child {
+	border-left: none;
+}
+</style>
+</html>

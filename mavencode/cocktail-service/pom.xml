@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.liquidpresentaion</groupId>
+	<artifactId>cocktail-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>cocktail-service</name>
+	<description>Cocktail Service API</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.M8</spring-cloud.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-rest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+			<version>1.4.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.liquidpresentation</groupId>
+			<artifactId>lp-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.voodoodyne.jackson.jsog</groupId>
+			<artifactId>jackson-jsog</artifactId>
+			<version>1.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<!-- flying saucer pdf -->
+		<dependency>
+			<groupId>org.xhtmlrenderer</groupId>
+			<artifactId>flying-saucer-pdf</artifactId>
+			<version>9.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.pdfbox</groupId>
+			<artifactId>pdfbox</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+		   <groupId>com.amazonaws</groupId>
+		   <artifactId>aws-java-sdk</artifactId>
+		   <version>1.11.133</version>
+		</dependency>
+		
+		<!-- apache poi -->
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml</artifactId>
+    		<version>3.17</version>
+		</dependency>
+		<dependency>
+    		<groupId>net.sf.jasperreports</groupId>
+    		<artifactId>jasperreports</artifactId>
+    		<version>6.0.3</version>
+		</dependency>
+		<dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-tools</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.typesafe.play</groupId>
+            <artifactId>play_2.10</artifactId>
+            <version>2.4.0-M2</version>
+        </dependency>
+        <dependency>
+    		<groupId>net.sf.jasperreports</groupId>
+    		<artifactId>jasperreports-fonts</artifactId>
+    		<version>6.0.0</version>
+		</dependency>
+		
+<!-- 		<dependency> -->
+<!-- 		    <groupId>helvetica</groupId> -->
+<!-- 		    <artifactId>helvetica</artifactId> -->
+<!-- 		    <version>1.0.0</version> -->
+<!-- 		    <scope>system</scope> -->
+<!-- 		    <systemPath>${basedir}/lib/helvetica.jar</systemPath> -->
+<!-- 		</dependency> -->
+		<dependency>
+    		<groupId>helvetica</groupId>
+    		<artifactId>helvetica</artifactId>
+		    <version>1.0.0</version>
+		    <scope>system</scope>
+            <systemPath>${basedir}/lib/helvetica.jar</systemPath>
+		</dependency>
+		
+		
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					
+                    <compilerArguments>
+                        <extdirs>>${project.basedir}/lib</extdirs>
+                    </compilerArguments>
+				
+				</configuration>
+				 
+			</plugin>      
+		</plugins>
+		    <!-- 打包所有jar包 -->
+		    
+	    <!-- <resources>  
+	        <resource>  
+	            <directory>lib</directory>  
+	            <targetPath>BOOT-INF/lib/</targetPath>  
+	            <includes>  
+	                <include>**/*.jar</include>  
+	            </includes>  
+        	</resource>  
+        	<resource>
+				<directory>src/main/resources</directory>
+	            <targetPath>BOOT-INF/classes/</targetPath>  
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+        </resources>   -->
+         
+        
+	</build>
+
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+
+</project>

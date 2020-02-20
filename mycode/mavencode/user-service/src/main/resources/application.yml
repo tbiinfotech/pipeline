@@ -1,0 +1,27 @@
+server:
+  port: 9010
+
+    
+logging:
+    level:
+      com.netflix: DEBUG
+      org.springframework.web: DEBUG
+      com.thoughtmechanix: DEBUG
+      org.springframework: DEBUG
+      
+security:
+  oauth2:
+    resource:
+      userInfoUri: https://authserver.liquidpresentation.com/auth/user
+      
+      
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.liquidpresentaion: DEBUG
+  file: /home/ubuntu/${spring.application.name:userservice}.log
+
+ribbon.ReadTimeout: 120000
+ribbon.ConnectTimeout: 30000

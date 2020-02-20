@@ -1,0 +1,63 @@
+#
+#   This is the core configuration for service.  I have two examples here:
+#
+#       -  A configuration service which completelty loads the configuration for the services
+#          from the local file server of the config service.  This should only be used for
+#          demonstration purposes or for a small application with a limited number of services.
+#
+#       -  A configuraton service that uses a git-based repository to read the files from
+#
+
+
+####################################
+####
+#Classpath and git-based solution
+####
+
+#server:
+#  port: 8888
+#spring:
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#      server:
+#        encrypt.enabled: false
+#        git:
+#          uri: https://github.com/carnellj/config-repo/
+#          searchPaths: userservice,organizationservice
+#          username: native-cloud-apps
+#          password: 0ffended
+
+
+####
+#Classpath and file-based solution
+####
+
+server:
+   port: 8888
+spring:
+  profiles:
+    active: native
+  cloud:
+     config:
+       server:
+           native:
+#              searchLocations: file://<chapter 3>/confsvr/src/main/resources/config/licensingservice,
+#                               file://<chapter 3>confsvr/src/main/resources/config/organizationservice
+              searchLocations: classpath:config/,classpath:config/userservice,classpath:config/ingredientservice,classpath:config/authenticationservice,classpath:config/managementservice,classpath:config/cocktailservice
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka-host:localhost}:8761/eureka/
+      
+#Setting the logging levels for the service
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+    com.liquidpresentaion: DEBUG
+  file: /home/ubuntu/${spring.application.name:configurationservice}.log
